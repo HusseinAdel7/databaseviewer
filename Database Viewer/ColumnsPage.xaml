@@ -1,0 +1,212 @@
+﻿<Window x:Class="Database_Viewer.ColumnsPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Database_Viewer"
+        mc:Ignorable="d"
+        Title="ColumnsPage" Height="700" Width="1200"
+    WindowStyle="None"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
+    Background="#1b212e">
+    <Window.Resources>
+        <Style x:Key="HoverButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="130"/>
+
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Background" Value="#849c64"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="30 20 0 0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="red"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+
+    <Grid>
+
+        <!--Laying Out-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--The Header Grid-->
+        <Grid Background="#2a3245" Grid.ColumnSpan="3" MouseDown="Grid_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Label Content="DbViewer"
+                    Foreground="Gray"
+                    FontSize="23"
+                    FontWeight="SemiBold" Margin="21,0,0,0"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <StackPanel HorizontalAlignment="Right"
+         Orientation="Horizontal">
+                    <Button Width="30" 
+                         Height="30" 
+                         Content="—"
+                         Background="Transparent"
+                         Foreground="white"
+                         BorderThickness="0"
+                         FontSize="22"
+                         FontWeight="bold"
+                         Margin="0 0 13 0"
+                         Click="ButtonMinimize_Click"/>
+
+                    <Button  Width="30" 
+                         Height="30" 
+                         Content="❌"
+                         Background="Transparent"
+                         Foreground="Red"
+                         BorderThickness="0"
+                         FontSize="20"
+                         Click="ButtonClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <WrapPanel 
+                    Margin="904,26,27,276" 
+                    x:Name="Instructions">
+                <Label Content="     You Can Show "
+                    Foreground="WhiteSmoke"
+                    FontSize="26"
+                    FontWeight="SemiBold" 
+                    Margin="0,120,0,0" 
+                    Height="234" 
+                    Width="245"/>
+                <Label  Content="Table Content and"
+                    Foreground="WhiteSmoke"
+                    FontSize="26"
+                    FontWeight="SemiBold" 
+                    Margin="19,-320,0,0" Height="45" Width="245"/>
+                <Label  Content="The Stored Data on It "
+                    Foreground="WhiteSmoke"
+                    FontSize="26"
+                    FontWeight="SemiBold" 
+                    Margin="0,-220,0,0" Height="44" Width="269"/>
+            </WrapPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                <WrapPanel Background="#1b1d21"
+                Width="801" 
+                            Height="504" 
+                            Margin="-270 10 0 0" 
+                            x:Name="buttonPanel" >
+                </WrapPanel>
+
+            </ScrollViewer>
+            <WrapPanel 
+                 Margin="430,-13,387,595" 
+                 x:Name="Instructions_Copy">
+
+                <Label  Content="Columns"
+                     Foreground="#849c64"
+                     FontSize="56"
+                     FontWeight="SemiBold" Height="80" Width="307"/>
+            </WrapPanel>
+            <WrapPanel 
+                Margin="883,348,10,65" 
+                x:Name="Instructions_Copy2">
+
+                <Button Content="Show Table Content"
+                         Foreground="White"
+                         FontSize="24"
+                         Click="TableContent_Click"
+                         FontWeight="Medium" 
+                         Height="123" 
+                         Width="273" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="1.102"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.693"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#849c64"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FE4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="280"
+                                     Height="39"
+                                     CornerRadius="13"
+                                     Background="{TemplateBinding Background}" Margin="0,16,-25,16">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </WrapPanel>
+
+
+        </Grid>
+        <Button  Content="" 
+          HorizontalAlignment="Left" 
+          Margin="-4,0,0,595" 
+          Width="149" 
+          Height="65"
+          Foreground="white"
+          FontSize="35"
+          BorderThickness="0"
+          x:Name="Back"
+          Click="Backbtn" Grid.Row="1" >
+            <Button.Background>
+                <ImageBrush  ImageSource="G:\Projects\Projects in C#\Database Viewer\Database Viewer\Images\previous.png"
+              Stretch="Uniform"
+              AlignmentX="Center"
+              AlignmentY="Center"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#181735"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#0f0f2d"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border  Width="90"
+              Height="30"
+              CornerRadius="15"
+              Background="{TemplateBinding Background}">
+                        <ContentPresenter   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

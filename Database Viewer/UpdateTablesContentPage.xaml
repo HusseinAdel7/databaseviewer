@@ -1,0 +1,173 @@
+﻿<Window x:Class="Database_Viewer.UpdateTablesContentPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Database_Viewer"
+        mc:Ignorable="d"
+        Title="UpdateTablesContentPage"         Height="780"
+        Width="1300"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#0f0f2d"  >
+    <Window.Resources>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="279*"/>
+            <ColumnDefinition Width="371*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!--Laying Out-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <!--The Header Grid-->
+        <Grid Background="#181735" Grid.ColumnSpan="2" MouseDown="Grid_MouseDown" Margin="0,-8,0,8" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+
+                <Label  Content="DbViewr"
+                    Foreground="Gray"
+                    FontSize="25"
+                    FontWeight="SemiBold" Margin="44,-4,-220,4"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                    <Button  Width="30" 
+                         Height="30" 
+                         Content="—"
+                         Background="Transparent"
+                         Foreground="white"
+                         BorderThickness="0"
+                         FontSize="22"
+                         FontWeight="bold"
+                         Margin="0 0 13 0"
+                         Click="ButtonMinimize_Click"/>
+                    <Button  Width="30" 
+                         Height="30" 
+                         Content="❌"
+                         Background="Transparent"
+                         Foreground="Red"
+                         BorderThickness="0"
+                         FontSize="20"
+                         Click="ButtonClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+
+
+
+
+
+
+
+        <!--DataGrid-->
+        <Grid Grid.ColumnSpan="2">
+
+            <StackPanel Margin="54,107,69,-702">
+                <DataGrid Height="628"
+                      x:Name="TableContentColumns" 
+                      AutoGenerateColumns="True" 
+                      IsReadOnly="True"
+                      HorizontalAlignment="Stretch" 
+                      ColumnWidth="*">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGrid}">
+                            <Setter Property="Background" Value="#0f0f2d"/>
+                            <Setter Property="Foreground" Value="#FFFF0983"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="BorderBrush" Value="white"/>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#0f0f2d"/>
+                            <Setter Property="Foreground" Value="#849c64"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="BorderBrush" Value="white"/>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Background" Value="#0f0f2d"/>
+                        </Style>
+                    </DataGrid.Resources>
+
+                </DataGrid>
+            </StackPanel>
+
+        </Grid>
+
+        <Button  Content="" 
+                 HorizontalAlignment="Left" 
+                 Margin="-8,34,0,681" 
+                 Width="149" 
+                 Height="65"
+                 Foreground="white"
+                 FontSize="35"
+                 BorderThickness="0"
+                 x:Name="Back"
+                 Click="Backbtn" Grid.RowSpan="2" >
+            <Button.Background>
+                <ImageBrush  ImageSource="G:\Projects\Projects in C#\Database Viewer\Database Viewer\Images\previous.png"
+                     Stretch="Uniform"
+                     AlignmentX="Center"
+                     AlignmentY="Center"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#181735"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#0f0f2d"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border  Width="90"
+                     Height="30"
+                     CornerRadius="15"
+                     Background="{TemplateBinding Background}">
+                        <ContentPresenter   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

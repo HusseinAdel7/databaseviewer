@@ -1,0 +1,20 @@
+﻿Database Viewer
+1.0.0.0
+
+winexe
+C#
+.cs
+G:\Projects\Projects in C#\Database Viewer - Copy\Database Viewer\obj\Debug\net7.0-windows\
+Database_Viewer
+none
+false
+TRACE;DEBUG;NET;NET7_0;NETCOREAPP
+G:\Projects\Projects in C#\Database Viewer - Copy\Database Viewer\App.xaml
+9-762858319
+
+14-1363526015
+226-1645848055
+ColumnsPage.xaml;ConnectionStringPage.xaml;DatabaseConnectionFailedPage.xaml;DatabaseInfoPage.xaml;DatabaseTablesPage.xaml;Inforamtion.xaml;LoginPage.xaml;MainWindow.xaml;UpdateTablesContentPage.xaml;
+
+False
+

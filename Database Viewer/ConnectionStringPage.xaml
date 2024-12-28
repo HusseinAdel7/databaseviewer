@@ -1,0 +1,166 @@
+﻿<Window x:Class="Database_Viewer.ConnectionStringPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Database_Viewer"
+        mc:Ignorable="d"
+        Title="ConnectionStringPage"
+         Height="420" Width="700"
+         WindowStyle="None"
+         WindowStartupLocation="CenterScreen"
+         ResizeMode="NoResize"
+         Background="#1b212e">
+    <Window.Resources>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                   BorderBrush="{TemplateBinding BorderBrush}"
+                   BorderThickness="{TemplateBinding BorderThickness}"
+                   CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+
+        <!--Laying Out-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+
+        <!--The Header Grid-->
+        <Grid Background="#2a3245" Grid.ColumnSpan="3" MouseDown="Grid_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Label Content="DbViewer"
+                      Foreground="Gray"
+                      FontSize="23"
+                      FontWeight="SemiBold" Margin="10,0,-88,0" RenderTransformOrigin="0.99,0.404"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <StackPanel HorizontalAlignment="Right"
+                           Orientation="Horizontal">
+                    <Button Width="30" 
+                           Height="30" 
+                           Content="—"
+                           Background="Transparent"
+                           Foreground="white"
+                           BorderThickness="0"
+                           FontSize="22"
+                           FontWeight="bold"
+                           Margin="0 0 13 0"
+                           Click="ButtonMinimize_Click"/>
+
+                    <Button Width="30" 
+                           Height="30" 
+                           Content="❌"
+                           Background="Transparent"
+                           Foreground="Red"
+                           BorderThickness="0"
+                           FontSize="20"
+                           Click="ButtonClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+
+        <!--TextBoxes-->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <StackPanel>
+
+                <!-- Name -->
+                <StackPanel  Margin="0 50 0 0">
+                    <Label  Foreground="white"
+                            FontSize="25"
+                            FontWeight="Bold" 
+                            Height="57" 
+                            Content="Server Name  " 
+                            Width="659"/>
+                    <TextBox    Height="52"
+                                x:Name="Server"
+                                FontSize="24"
+                                FontWeight="SemiBold"
+                                Foreground="#FFFF0983"
+                                BorderThickness="2"
+                                BorderBrush="#133434"
+                                Style="{StaticResource RoundedTextBoxStyle}" 
+                                Width="444"
+                                Margin="190 -60 0 0 "/>
+                </StackPanel>
+                <StackPanel  Margin="0 50 0 0" >
+                    <Label  Foreground="white"
+                            FontSize="25"
+                            FontWeight="Bold" 
+                            Height="57" 
+                            Content="Database Name  " 
+                            Width="659"/>
+                    <TextBox    Height="52"
+                                x:Name="Database"
+                                FontSize="24"
+                                FontWeight="SemiBold"
+                                Foreground="#FFFF0983"
+                                BorderThickness="2"
+                                BorderBrush="#133434"
+                                Style="{StaticResource RoundedTextBoxStyle}" 
+                                Width="444"
+                                Margin="190 -60 0 0 "/>
+                </StackPanel>
+
+            </StackPanel>
+
+
+        </Grid>
+
+        <Button    Content="Go" 
+                   Grid.Row="1" 
+                   Height="82"
+                   FontSize="42"
+                   BorderThickness="0"
+                   x:Name="go" 
+                   Margin="217,271,239,27" Click="go_Click" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#3891ba"/>
+                    <Setter Property="Foreground" Value="white"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#0f0f2d"/>
+                            <Setter Property="Foreground" Value="#306a85"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border    Width="155"
+                               Height="60"
+                               CornerRadius="18"
+                               Background="{TemplateBinding Background}" 
+                               Margin="0,11,-82,11" >
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+    </Grid>
+</Window>
